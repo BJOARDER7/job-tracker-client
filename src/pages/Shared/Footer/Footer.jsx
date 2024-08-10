@@ -11,7 +11,7 @@ const Footer = () => {
     <div className='h-20'>
     <img className='h-full rounded' src={logo} alt="" /> 
     </div>
-    <address>
+    <address className='text-sm md:text-base'>
       <p>Danmondi, Dhaka South, Dhaka.</p>
       <p>Tell: +24772500000</p>
       <p>Phone: +880171000000</p>
