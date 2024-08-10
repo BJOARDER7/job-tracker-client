@@ -89,11 +89,8 @@ const Navbar = () => {
         ) : (
           <div className="flex items-center gap-2">
             <Link to="/login">
-          <button className="btn btn-accent w-16 md:w-24">Login</button>
-        </Link>
-        <Link to="/register">
-          <button className="btn btn-accent w-16 md:w-24">Register</button>
-        </Link>
+          <button className="btn btn-primary w-16 md:w-24">Login</button>
+        </Link>        
           </div>
         )}
         
