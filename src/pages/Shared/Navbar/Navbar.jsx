@@ -1,7 +1,10 @@
 import { Link, NavLink } from "react-router-dom";
 import logo from '../../../assets/logo.png';
+import { useContext } from "react";
+import { AuthContext } from "../../../provider/AuthProvider";
 
 const Navbar = () => {
+  const {user, logOut} = useContext(AuthContext);
 
   const navLink = <>
      <li className="px-1">
@@ -21,10 +24,16 @@ const Navbar = () => {
       </li>  
      <li className="px-1">
         <NavLink to="/blogs">Blogs</NavLink>
-      </li>  
-    
-           
+      </li>             
   </>
+
+  const handleLogOut = () => {
+    logOut()
+      .then(() => console.log("User login successfully"))
+      .catch((error) => console.log(error));
+  }
+
+
   return (
     <div className="navbar bg-base-100">
       <div className="navbar-start">
@@ -60,14 +69,34 @@ const Navbar = () => {
          {navLink}
     </ul>
       </div>
-      <div className="navbar-end">
-      <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
-        <div className="w-10 rounded-full">
-          <img
-            alt="Tailwind CSS Navbar component"
-            src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
-        </div>
-      </div>
+      <div className="navbar-end flex items-center gap-2">
+        {user ? (
+          <>
+            <div
+              title={user.displayName}
+              tabIndex={0}
+              role="button"
+              className="btn btn-ghost btn-circle avatar"
+            >
+              <div className="w-4 md:w-10 rounded-full">
+                <img alt="User" src={user.photoURL} />
+              </div>
+            </div>
+            <a onClick={handleLogOut} className="btn btn-sm btn-outline ms-2">
+              Sign Out
+            </a>
+          </>
+        ) : (
+          <div className="flex items-center gap-2">
+            <Link to="/login">
+          <button className="btn btn-accent w-16 md:w-24">Login</button>
+        </Link>
+        <Link to="/register">
+          <button className="btn btn-accent w-16 md:w-24">Register</button>
+        </Link>
+          </div>
+        )}
+        
       </div>
     </div>
   );
