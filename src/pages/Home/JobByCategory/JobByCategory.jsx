@@ -1,12 +1,13 @@
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
-import JobCard from './JobCard';
+import JobCard from './AllJobsCard';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import OnSiteJob from './OnSiteJob';
 import RemoteJob from './RemoteJob';
 import HybridJob from './HybridJob';
 import PartTimeJob from './PartTimeJob';
+import AllJobsCard from './AllJobsCard';
 
 const JobByCategory = () => {
   const [jobs, setJobs] = useState([]);
@@ -37,10 +38,10 @@ const JobByCategory = () => {
     <TabPanel>
       <div className='grid grid-cols-1 md:grid-cols-3 gap-4 my-4'>
       {
-        jobs.map(job => <JobCard
+        jobs.map(job => <AllJobsCard
         key={job._id}
         job={job}
-        ></JobCard>)
+        ></AllJobsCard>)
       }
       </div>
     </TabPanel>

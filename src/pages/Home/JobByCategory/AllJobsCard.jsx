@@ -1,11 +1,13 @@
-const JobCard = ({job}) => {
+
+
+const AllJobsCard = ({job}) => {
   const {posted_by, title, posting_date, application_deadline, salary_range, applicants, image} = job;
   return (
     <div className="card bg-base-100 w-96 shadow-xl">
   <figure>
     <img
       src={image}
-      alt="Job Image" />
+      alt="Company Image" />
   </figure>
   <div className="card-body">
     <h2>Job Posted by {posted_by}</h2>
@@ -26,4 +28,4 @@ const JobCard = ({job}) => {
   );
 };
 
-export default JobCard;
+export default AllJobsCard;
