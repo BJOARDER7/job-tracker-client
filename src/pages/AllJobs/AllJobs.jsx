@@ -2,10 +2,8 @@ import JobCard from "./JobCard";
 import { useQuery } from "@tanstack/react-query";
 
 const AllJobs = () => {
-  // const jobs = useLoaderData();
-  // http://localhost:5000/jobs
 
-  const {isPending, data: jobs, isError, error} = useQuery({
+  const {isLoading, data: jobs, isError, error} = useQuery({
     queryKey: ['jobs'],
     queryFn: async () => {
       const res = await fetch('http://localhost:5000/jobs');
@@ -13,11 +11,11 @@ const AllJobs = () => {
     }
   });
 
-  if(isPending){
-    return <p>Lodding</p>
+  if(isLoading){
+    return <div className="flex justify-center items-center my-2"><span className="loading loading-spinner text-info"></span></div>
   }
   if(isError){
-    return <p>error: {error.message}</p>
+    return <p className="text-center text-red-600 my-2">error: {error.message}</p>
   }
   
   return (
@@ -36,7 +34,7 @@ const AllJobs = () => {
     </thead>
     <tbody>      
       {
-        jobs?.map(job => <JobCard
+        jobs.map(job => <JobCard
         key={job._id}
         job={job}
         ></JobCard>)

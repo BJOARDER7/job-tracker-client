@@ -7,7 +7,9 @@
       "posting_date": "2024-08-01",
       "application_deadline": "2024-08-15",
       "salary_range": "$90,000 - $110,000",
-      "applicants": 25
+      "applicants": 25,
+      "description": "Develop and maintain software applications, collaborate with cross-functional teams, and ensure high performance and responsiveness of applications.",
+      "image": "https://example.com/images/company1.png"
     },
     {
       "id": 2,
@@ -17,7 +19,9 @@
       "posting_date": "2024-08-05",
       "application_deadline": "2024-08-20",
       "salary_range": "$75,000 - $90,000",
-      "applicants": 18
+      "applicants": 18,
+      "description": "Analyze complex datasets, create reports and visualizations, and work closely with business teams to provide data-driven insights.",
+      "image": "https://example.com/images/company2.png"
     },
     {
       "id": 3,
@@ -27,7 +31,9 @@
       "posting_date": "2024-08-10",
       "application_deadline": "2024-08-25",
       "salary_range": "$80,000 - $95,000",
-      "applicants": 22
+      "applicants": 22,
+      "description": "Manage and maintain network infrastructure, troubleshoot network issues, and ensure the security and efficiency of the network environment.",
+      "image": "https://example.com/images/company3.png"
     },
     {
       "id": 4,
@@ -37,7 +43,9 @@
       "posting_date": "2024-08-02",
       "application_deadline": "2024-08-17",
       "salary_range": "$80,000 - $95,000",
-      "applicants": 30
+      "applicants": 30,
+      "description": "Lead marketing campaigns, manage the marketing team, and develop strategies to increase brand awareness and customer engagement.",
+      "image": "https://example.com/images/company4.png"
     },
     {
       "id": 5,
@@ -47,7 +55,9 @@
       "posting_date": "2024-08-07",
       "application_deadline": "2024-08-22",
       "salary_range": "$60,000 - $75,000",
-      "applicants": 15
+      "applicants": 15,
+      "description": "Optimize website content, improve search engine rankings, and analyze website performance metrics to increase organic traffic.",
+      "image": "https://example.com/images/company5.png"
     },
     {
       "id": 6,
@@ -57,7 +67,9 @@
       "posting_date": "2024-08-12",
       "application_deadline": "2024-08-27",
       "salary_range": "$55,000 - $70,000",
-      "applicants": 20
+      "applicants": 20,
+      "description": "Write and edit content for various platforms, ensure content is engaging and informative, and collaborate with the marketing team to align content with business goals.",
+      "image": "https://example.com/images/company6.png"
     },
     {
       "id": 7,
@@ -67,7 +79,9 @@
       "posting_date": "2024-08-03",
       "application_deadline": "2024-08-18",
       "salary_range": "$85,000 - $100,000",
-      "applicants": 20
+      "applicants": 20,
+      "description": "Analyze financial data, create financial models, and provide insights and recommendations to improve financial performance.",
+      "image": "https://example.com/images/company7.png"
     },
     {
       "id": 8,
@@ -77,7 +91,9 @@
       "posting_date": "2024-08-09",
       "application_deadline": "2024-08-24",
       "salary_range": "$50,000 - $65,000",
-      "applicants": 12
+      "applicants": 12,
+      "description": "Prepare financial statements, manage accounts, and ensure compliance with financial regulations and standards.",
+      "image": "https://example.com/images/company8.png"
     },
     {
       "id": 9,
@@ -87,7 +103,9 @@
       "posting_date": "2024-08-04",
       "application_deadline": "2024-08-19",
       "salary_range": "$120,000 - $150,000",
-      "applicants": 10
+      "applicants": 10,
+      "description": "Advise clients on financial matters, manage investment portfolios, and work on mergers, acquisitions, and capital raising.",
+      "image": "https://example.com/images/company9.png"
     },
     {
       "id": 10,
@@ -97,7 +115,9 @@
       "posting_date": "2024-08-02",
       "application_deadline": "2024-08-17",
       "salary_range": "$80,000 - $95,000",
-      "applicants": 30
+      "applicants": 30,
+      "description": "Lead marketing campaigns, manage the marketing team, and develop strategies to increase brand awareness and customer engagement.",
+      "image": "https://example.com/images/company4.png"
     },
     {
       "id": 11,
@@ -107,7 +127,9 @@
       "posting_date": "2024-08-11",
       "application_deadline": "2024-08-26",
       "salary_range": "$70,000 - $85,000",
-      "applicants": 22
+      "applicants": 22,
+      "description": "Coordinate project activities, manage timelines and budgets, and work closely with project managers to ensure successful project delivery.",
+      "image": "https://example.com/images/company10.png"
     }
   ]
 
