@@ -1,13 +1,13 @@
 import { useContext } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
 import Swal from "sweetalert2";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import loginImg from "../../assets/login.svg";
 
 const Login = () => {
   const {logIn, googleLogin} = useContext(AuthContext);
-  // const navigate = useNavigate();
-  // const location = useLocation();
+  const navigate = useNavigate();
+  const location = useLocation();
 
 
     const handleLogin = event => {
@@ -32,7 +32,7 @@ const Login = () => {
           });
     
           // navigation after login
-          // navigate(location?.state ? location.state : '/');
+          navigate(location?.state ? location.state : '/');
     
         })
         .catch(error => {
@@ -51,7 +51,7 @@ const Login = () => {
         .then(result => {
           const loggedUser = result.user;
           console.log(loggedUser);
-          // navigate(location?.state ? location.state : '/');
+          navigate(location?.state ? location.state : '/');
         })
         .catch(error => {
           console.log(error);
