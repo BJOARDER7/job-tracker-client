@@ -1,9 +1,10 @@
+import { Link } from "react-router-dom";
 
 
 const JobCard = ({job}) => {
-  const {title, posting_date, application_deadline, salary_range} = job;
+  const {_id, title, posting_date, application_deadline, salary_range} = job;
    
-
+  
   return (
     <tr>
         <th>
@@ -20,7 +21,9 @@ const JobCard = ({job}) => {
         <td>{application_deadline}</td>
         <td>{salary_range}</td>
         <th>
-          <button className="btn btn-link btn-xs">Details</button>
+          <Link to={`/job/${_id}`}>
+          <button className="btn btn-link btn-xs">View Details</button>
+          </Link>
         </th>
       </tr>
   );

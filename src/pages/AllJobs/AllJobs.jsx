@@ -1,8 +1,24 @@
-import { useLoaderData } from "react-router-dom";
 import JobCard from "./JobCard";
+import { useQuery } from "@tanstack/react-query";
 
 const AllJobs = () => {
-  const jobs = useLoaderData();
+  // const jobs = useLoaderData();
+  // http://localhost:5000/jobs
+
+  const {isPending, data: jobs, isError, error} = useQuery({
+    queryKey: ['jobs'],
+    queryFn: async () => {
+      const res = await fetch('http://localhost:5000/jobs');
+      return res.json();
+    }
+  });
+
+  if(isPending){
+    return <p>Lodding</p>
+  }
+  if(isError){
+    return <p>error: {error.message}</p>
+  }
   
   return (
 <div className="overflow-x-auto my-4">
@@ -20,7 +36,7 @@ const AllJobs = () => {
     </thead>
     <tbody>      
       {
-        jobs.map(job => <JobCard
+        jobs?.map(job => <JobCard
         key={job._id}
         job={job}
         ></JobCard>)
