@@ -9,6 +9,7 @@ import AllJobs from "../pages/AllJobs/AllJobs";
 import JobDetailsPage from "../pages/JobDetailsPage/JobDetailsPage";
 import AddJob from "../pages/Home/AddJob/AddJob";
 import PrivateRoute from "./PrivateRoute";
+import AddAJob from "../pages/Home/AddJob/AddAJob";
 
 
 const router = createBrowserRouter([
