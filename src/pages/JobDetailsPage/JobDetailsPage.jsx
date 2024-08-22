@@ -8,7 +8,7 @@ const JobDetailsPage = () => {
     queryKey: ['job', id],
     queryFn: async ({ queryKey }) => {
       const [_key, id] = queryKey;
-      const res = await fetch(`http://localhost:5000/job/${id}`);
+      const res = await fetch(`http://localhost:5000/jobs/${id}`);
       
       if (!res.ok) {
         throw new Error('Failed to fetch job details');

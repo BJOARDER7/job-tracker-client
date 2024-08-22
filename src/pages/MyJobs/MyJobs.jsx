@@ -3,6 +3,7 @@ import MyJobList from "./MyJobList";
 import { useState } from "react";
 
 
+
 const MyJobs = () => {
 
   const {isLoading, data: items, isError, error} = useQuery({
@@ -23,10 +24,12 @@ const MyJobs = () => {
   }
 
 
+  
   return (
     <table className="my-4">
     <thead>
       <tr>
+        <th></th>
         <th>Job Title</th>
         <th>Description</th>
         <th>Actions</th>
@@ -34,11 +37,11 @@ const MyJobs = () => {
     </thead>
     <tbody>
       {
-        jobs.map(job => <MyJobList
+        jobs?.map(job => <MyJobList
         key={job._id}
-        job={job}
-        // jobs={jobs}
-        // setJobs={setJobs}
+        job={job}      
+        jobs={jobs}
+        setJobs={setJobs}        
         ></MyJobList>)
       }
     </tbody>

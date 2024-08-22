@@ -21,7 +21,7 @@ const JobCard = ({job}) => {
         <td>{application_deadline}</td>
         <td>{salary_range}</td>
         <th>
-          <Link to={`/job/${_id}`}>
+          <Link to={`/jobs/${_id}`}>
           <button className="btn btn-link btn-xs">View Details</button>
           </Link>
         </th>
