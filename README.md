@@ -1,8 +1,19 @@
-# React + Vite
+## Searching related website named as ---
+# Job Tracker
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+  * Go to visit my site-
+    * dummy
 
-Currently, two official plugins are available:
+  * My website objectives as
+    * My site responsible for all devices
+    * After reloading the page of a private route, the user should not be redirected
+      to the login page
+    * It also connected with Firebase & Mongodb
+    * By using Daisy UI, design my website, you may be needed, can customize the styling
+    * My site also use TanStack Query & Axios for highly performance
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+  * Website categories as
+    * On-Site Job
+    * Remote Job
+    * Hybrid Job
+    * Part-Time Job

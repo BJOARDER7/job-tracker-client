@@ -37,7 +37,7 @@ const MyJobs = () => {
     </thead>
     <tbody>
       {
-        jobs?.map(job => <MyJobList
+        jobs.map(job => <MyJobList
         key={job._id}
         job={job}      
         jobs={jobs}
