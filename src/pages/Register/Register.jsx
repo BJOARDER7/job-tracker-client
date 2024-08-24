@@ -59,10 +59,10 @@ const Register = () => {
         <div className="hero bg-base-200 min-h-screen">
       
   <div className="hero-content flex-col lg:flex-row">
-  <div className="">
-      <img src={regImg} alt="Register" />      
+  <div className="w-full md:w-3/5">
+      <img className="h-auto" src={regImg} alt="Register" />      
     </div>
-    <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
+    <div className="card bg-base-100 w-full md:w-3/5 max-w-sm shrink-0 shadow-2xl">
       <form onSubmit={handleRegister} className="card-body">
         <div className="form-control">
           <label className="label">
@@ -93,7 +93,7 @@ const Register = () => {
           <input type="photo" name="photo" placeholder="Photo URL" className="input input-bordered" required />
         </div>       
         <div className="form-control mt-6">
-          <button className="btn btn-primary text-xl">Register</button>
+          <button className="btn bg-[#818cf8] w-full text-xl">Register</button>
         </div>
       </form>
       <div className="text-center my-2">

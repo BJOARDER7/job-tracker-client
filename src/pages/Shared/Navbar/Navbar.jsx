@@ -7,22 +7,22 @@ const Navbar = () => {
   const {user, logOut} = useContext(AuthContext);
 
   const navLink = <>
-     <li className="px-1">
+     <li className="px-1 text-xs md:text-base">
         <NavLink to="/">Home</NavLink>
       </li>  
-     <li className="px-1">
+     <li className="px-1 text-xs md:text-base">
         <NavLink to="/alljobs">All Jobs</NavLink>
       </li>  
-     <li className="px-1">
+     <li className="px-1 text-xs md:text-base">
         <NavLink to="/appliedjobs">Applied Jobs</NavLink>
       </li>  
-     <li className="px-1">
+     <li className="px-1 text-xs md:text-base">
         <NavLink to="/addjob">Add A Job</NavLink>
       </li>  
-     <li className="px-1">
+     <li className="px-1 text-xs md:text-base">
         <NavLink to="/myjobs">My Jobs</NavLink>
       </li>  
-     <li className="px-1">
+     <li className="px-1 text-xs md:text-base">
         <NavLink to="/blogs">Blogs</NavLink>
       </li>             
   </>
@@ -56,15 +56,15 @@ const Navbar = () => {
           </div>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-2 w-36 p-2 shadow"
           >
             {navLink}
           </ul>
         </div>
-        <Link to="/"><img className="h-16 w-16 rounded" src={logo} alt="" /></Link>
+        <Link to="/"><img className="h-8 md:h-16 w-8 md:w-16 rounded" src={logo} alt="" /></Link>
         
       </div>
-      <div className="navbar-center hidden lg:flex">
+      <div className="navbar-center hidden md:flex">
         <ul className="menu menu-horizontal px-1">
          {navLink}
     </ul>
@@ -78,18 +78,18 @@ const Navbar = () => {
               role="button"
               className="btn btn-ghost btn-circle avatar"
             >
-              <div className="w-4 md:w-10 rounded-full">
+              <div className="w-6 md:w-10 rounded-full">
                 <img alt="User" src={user.photoURL} />
               </div>
             </div>
-            <a onClick={handleLogOut} className="btn btn-sm btn-outline ms-2">
+            <a onClick={handleLogOut} className="btn btn-xs md:btn-sm btn-outline h-6 md:h-10 w-20 md:w-24 ms-1 md:ms-2 text-xs md:text-base">
               Sign Out
             </a>
           </>
         ) : (
           <div className="flex items-center gap-2">
             <Link to="/login">
-          <button className="btn btn-primary w-16 md:w-24">Login</button>
+          <button className="btn btn-xs md:btn-sm bg-[#818cf8] h-6 md:h-10 w-12 md:w-20 text-xs md:text-base">Login</button>
         </Link>        
           </div>
         )}

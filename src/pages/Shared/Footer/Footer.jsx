@@ -10,7 +10,7 @@ const Footer = () => {
             <div className="h-20">
               <img className="h-full rounded" src={logo} alt="" />
             </div>
-            <address className="text-sm md:text-base">
+            <address className="text-xs md:text-base">
               <p>Danmondi, Dhaka South, Dhaka.</p>
               <p>Tell: +24772500000</p>
               <p>Phone: +880171000000</p>
@@ -44,7 +44,7 @@ const Footer = () => {
         </nav>
         <form>
           <h6 className="footer-title">Newsletter</h6>
-          <fieldset className="form-control w-80">
+          <fieldset className="form-control w-24 md:w-80">
             <label className="label">
               <span className="label-text">Enter your email address</span>
             </label>
@@ -52,20 +52,20 @@ const Footer = () => {
               <input
                 type="text"
                 placeholder="username@site.com"
-                className="input input-bordered join-item"
+                className="input input-bordered join-item text-xs md:text-base"
               />
-              <button className="btn btn-primary join-item">Subscribe</button>
+              <button className="btn btn-warning join-item text-xs md:text-base">Subscribe</button>
             </div>
           </fieldset>
         </form>
       </div>
       <div className="footer-center text-center text-base-content rounded space-y-2 pb-2">
-        <aside>
-          <p>
+        
+          <p className="text-xs md:text-base text-start md:text-center ps-2">
             Copyright © {new Date().getFullYear()} - All right reserved by Job
             Tracker Team
           </p>
-        </aside>
+        
       </div>
     </footer>
   );

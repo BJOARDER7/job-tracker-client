@@ -62,10 +62,10 @@ const Login = () => {
     return (
     <div className="hero bg-base-200 min-h-screen">      
   <div className="hero-content flex-col lg:flex-row">
-    <div className="">
-      <img src={loginImg} alt="Login" />      
+    <div className="w-full md:w-3/5">
+      <img className="h-auto" src={loginImg} alt="Login" />      
     </div>
-    <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
+    <div className="card bg-base-100 w-full md:w-3/5 max-w-sm shrink-0 shadow-2xl">
       <form onSubmit={handleLogin} className="card-body">
         <div className="form-control">
           <label className="label">
@@ -83,13 +83,13 @@ const Login = () => {
           </label>
         </div>
         <div className="form-control mt-2 md:mt-6">
-          <button className="btn btn-primary text-xl">Login</button>
+          <button className="btn bg-[#818cf8] text-xl w-full">Login</button>
         </div>
       </form>
       <div className="mx-auto">
         <p className="text-center font-medium text-xl">Login with</p>
         <div className="flex items-center gap-2">
-        <button onClick={handleGoogleLogin} className="btn btn-sm btn-primary my-2">Google</button>       
+        <button onClick={handleGoogleLogin} className="btn btn-sm bg-[#818cf8] my-2">Google</button>       
         </div>
       </div>
       <div className="text-center my-2">
