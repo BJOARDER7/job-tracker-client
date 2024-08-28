@@ -1,21 +1,43 @@
 import { useContext } from "react";
 import { AuthContext } from "../../../provider/AuthProvider";
-import { useLoaderData } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import Swal from "sweetalert2";
+import { useQuery } from "@tanstack/react-query";
+
 
 
 const UpdateJob = () => { 
-  const job = useLoaderData();
-  const {_id, title, posting_date, application_deadline, salary_range, applicants, description, category, image} = job;
-  console.log(job)
-  const {user} = useContext(AuthContext);
 
-  // useEffect( () => {
-  //   axios.get('http://localhost:5000/jobs')
-  //   .then(data => {
-  //     setJobs(data.data);
-  //   })
-  // }, []);
+  const { id } = useParams();
+  const { user } = useContext(AuthContext);
+  const { isLoading, data: job } = useQuery({
+    queryKey: ['job', id],
+    queryFn: async ({ queryKey }) => {
+      const [_key, id] = queryKey;
+      const res = await fetch(`http://localhost:5000/jobs/${id}`);
+      
+      if (!res.ok) {
+        throw new Error('Failed to fetch job details');
+      }
+      
+      const data = await res.json();
+      console.log(data); 
+      return data;
+    }
+  });
+
+  if (isLoading) {
+    return (
+      <div className="flex justify-center items-center my-2">
+        <span className="loading loading-spinner text-info"></span>
+      </div>
+    );
+  }  
+
+  const { _id, title, posting_date, application_deadline, salary_range, applicants, description, category, image } = job;
+
+  console.log(job)
+
 
   const handleUpdate = (e) => {
     e.preventDefault();
@@ -63,208 +85,164 @@ const UpdateJob = () => {
       .then((data) => {
         console.log(data);
         if (data.modifiedCount > 0) {
-          // const updatedJobs = jobs.map((jobItem) =>
-          //   jobItem._id === id ? { ...jobItem, ...updatedJob } : jobItem
-          // );
-          // const remaining = jobs.filter(job => job._id !== currentJobId);
-          // const updated = jobs.find(job => job._id === currentJobId);
-          // const newJobs = [updated, ...remaining];
-          
+                 
           Swal.fire({
             title: "Success!",
             text: "Job Updated Successfully",
             icon: "success",
             confirmButtonText: "OK",            
           });
-          // document.getElementById("my_modal_5").close();
+          
         }
       });
 }
 
-// const openModalWithJob = (id) => {
-//   setCurrentJobId(id); 
-//   document.getElementById("my_modal_5").showModal();
-// };
+
    
   return (
-    <div className="bg-[#F4F3F0] p-8">
-      <h2 className="text-3xl font-extrabold text-center">Update a job of {title}</h2>
-      <div className="flex justify-center">
-      <form onSubmit={handleUpdate}>
-        <div className="md:flex mb-4">
-          {/* Job Name */}
-          <div className="form-control md:w-1/2">
-            <label className="label">
-              <span className="label-text">Job Name</span>
-            </label>
-            <label className="input-group">
+    <div className="w-3/5 mx-auto my-2 md:my-4 pt-2 bg-gray-100 rounded-lg">
+      <h2 className="text-center text-lg md:text-2xl font-bold">Add A Job</h2>
+      <hr className="w-2/3 mx-auto my-2" />
+      <div className="flex justify-center w-full mt-2 md:mt-4">
+        <form onSubmit={handleUpdate} className="w-11/12 py-2 md:py-4 ">
+          {/* category & job applicants */}
+          <div className="md:flex justify-between mb-2 md:mb-4 space-x-4 space-y-2">
+            {/* category */}
+            <div className="flex justify-start items-center space-x-2 w-full md:w-1/2">
+              <label>Job Category:</label>
+              <select
+                name="category"
+                defaultValue={category}                
+                className="flex-1 w-1/4 py-1 px-2 border-2 border-slate-300 rounded-md"
+              >
+                <option value="On-Site">On-Site</option>
+                <option value="Remote">Remote</option>
+                <option value="Part-Time">Part-Time</option>
+                <option value="Hybrid">Hybrid</option>
+              </select>
+            </div>
+            {/* job applicant */}
+            <div className="flex justify-start items-center space-x-2 w-full md:w-1/2">
+              <label>Job Applicants Number:</label>
+              <input
+                type="number"
+                name="applicants"
+                defaultValue={applicants}
+                className="flex-1 w-1/4 py-1 px-2 border-2 border-slate-300 rounded-md"               
+                
+              />
+            </div>
+          </div>
+          {/* title & salary part */}
+          <div className="md:flex justify-between mb-2 md:mb-4 space-x-4 space-y-2">
+            {/* title */}
+            <div className="flex justify-start items-center space-x-2 w-full md:w-1/2">
+              <label>Job Title:</label>
               <input
                 type="text"
                 name="title"
-                defaultValue={title}                
-                placeholder="Job Name"
-                className="input input-bordered w-full"
+                defaultValue={title}
+                className="flex-1 w-2/3 py-1 px-2 border-2 border-slate-300 rounded-md"
+                
               />
-            </label>
-          </div>
-          {/* category*/}
-          <div className="form-control w-1/2 ml-4">
-            <label className="label">
-              <span className="label-text">Category Name</span>
-            </label>
-            <label className="input-group">
-              <input
-                type="text"
-                name="category"
-                defaultValue={category} 
-                placeholder="Category Name"
-                className="input input-bordered w-full"
-              />
-            </label>
-          </div>
-        </div>
-        {/* short salary_range*/}
-        <div className="mb-4">
-          <div className="form-control md:w-full">
-            <label className="label">
-              <span className="label-text">Salary Range</span>
-            </label>
-            <label className="input-group">
+            </div>
+            {/* salary */}
+            <div className="flex justify-start items-center space-x-2 w-full md:w-1/2">
+              <label>Salary Range:</label>
               <input
                 type="text"
                 name="salary_range"
-                defaultValue={salary_range} 
-                placeholder="Salary Range"
-                className="input input-bordered w-full"
+                defaultValue={salary_range}
+                className="flex-1 w-2/3 py-1 px-2 border-2 border-slate-300 rounded-md"
+                
+                
               />
-            </label>
+            </div>
           </div>
-        </div>
-        {/* Photo URL */}
-        <div className="mb-4">
-          <div className="form-control md:w-full">
-            <label className="label">
-              <span className="label-text">Description</span>
-            </label>
-            <label className="input-group">
-              <input
-                type="text"
-                name="description"
-                defaultValue={description} 
-                placeholder="Description"
-                className="input input-bordered w-full"
-              />
-            </label>
-          </div>
-        </div>
-
-        <div className="md:flex mb-4">
-          {/* posting_date */}
-          <div className="form-control md:w-1/2">
-            <label className="label">
-              <span className="label-text">Posting date</span>
-            </label>
-            <label className="input-group">
+          {/* date */}
+          <div className="md:flex justify-between mb-2 md:mb-4 space-x-4">
+            <div className="flex justify-start items-center space-x-2 w-full md:w-1/2">
+              <label>Job Posting Date:</label>
               <input
                 type="date"
                 name="posting_date"
-                defaultValue={posting_date} 
-                placeholder="Posting date"
-                className="input input-bordered w-full"
+                defaultValue={posting_date}
+                className="flex-1 py-1 px-2 border-2 border-slate-300 rounded-md"
               />
-            </label>
-          </div>
-          {/* application_deadline */}
-          <div className="form-control md:w-1/2 ml-4">
-            <label className="label">
-              <span className="label-text">Application deadline</span>
-            </label>
-            <label className="input-group">
+            </div>
+            
+            <div className="flex justify-start items-center space-x-2 w-full md:w-1/2">
+              <label>Application Deadline:</label>
               <input
                 type="date"
-                name="application_deadline"
-                defaultValue={application_deadline} 
-                placeholder="Application deadline"
-                className="input input-bordered w-full"
+            name="application_deadline"
+            defaultValue={application_deadline}
+                className="flex-1 py-1 px-2 border-2 border-slate-300 rounded-md"
               />
-            </label>
+            </div>
           </div>
-        </div>
-
-        <div className="md:flex mb-4">
-          {/* Stock Status */}
-          <div className="form-control md:w-1/2">
-            <label className="label">
-              <span className="label-text">Applicants</span>
-            </label>
-            <label className="input-group">
-              <input
-                type="text"
-                name="applicants"
-                defaultValue={applicants} 
-                placeholder="Applicants"
-                className="input input-bordered w-full"
-              />
-            </label>
-          </div>
-          {/* Processing Time */}
-          <div className="form-control md:w-1/2 ml-4">
-            <label className="label">
-              <span className="label-text">Image</span>
-            </label>
-            <label className="input-group">
+          {/* picture URL */}
+          <div className="mb-2 md:mb-4">
+            <div className="flex justify-start items-center space-x-2 w-full">
+              <label>Picture URL of the Job Banner:</label>
               <input
                 type="text"
                 name="image"
-                defaultValue={image} 
-                placeholder="image"
-                className="input input-bordered w-full"
+                defaultValue={image}
+                className="flex-1 py-1 px-2 border-2 border-slate-300 rounded-md"
+               
+                
               />
-            </label>
+            </div>
           </div>
-        </div>
-        <div className="mb-4">
-          <div className="form-control md:w-full">
-            <label className="label">
-              <span className="label-text">User Email</span>
-            </label>
-            <label className="input-group">
+
+          {/* job description */}
+
+          <div className="md:flex mb-2 md:mb-4">
+            <div className="flex justify-start items-center space-x-2 w-full">
+              <label>Job Description:</label>
+              <textarea
+                name="description"
+                defaultValue={description}
+                className="flex-1 w-2/3 py-1 px-2 border-2 border-slate-300 rounded-md"
+                
+               
+              ></textarea>
+            </div>
+          </div>
+          {/* user name & email */}
+          <div className="md:flex justify-between mb-2 md:mb-4 space-x-4 space-y-2">
+            {/* user name */}
+            <div className="flex justify-start items-center space-x-2 w-full md:w-1/2">
+              <label>User Name:</label>
+              <input
+                type="text"
+                name="user"
+                className="flex-1 w-2/3 py-1 px-2 border-2 border-slate-300 rounded-md"
+                defaultValue={user?.displayName}
+                readOnly
+              />
+            </div>
+            {/* email */}
+            <div className="flex justify-start items-center space-x-2 w-full md:w-1/2">
+              <label>User Email:</label>
               <input
                 type="email"
                 name="email"
-                defaultValue={user.email}
-                placeholder="User Email"
-                className="input input-bordered md:w-full"
+                className="flex-1 w-2/3 py-1 px-2 border-2 border-slate-300 rounded-md"
+                defaultValue={user?.email}
                 readOnly
               />
-            </label>
+            </div>
           </div>
-        </div>
-        <div className="form-control md:w-1/2">
-            <label className="label">
-              <span className="label-text">User Name</span>
-            </label>
-            <label className="input-group">
-              <input
-                type="text"
-                name="name" 
-                defaultValue={user.displayName}               
-                placeholder="User Name"
-                className="input input-bordered w-full"
-                readOnly
-              />
-            </label>
-          </div>               
-        
 
-        <input
-          type="submit"                   
-          value="Update A Job"
-          className="btn btn-outline md:w-full my-4"
-        />
-      </form>
+          <div className="flex justify-center items-center">
+            <button className="btn bg-[#818cf8] w-2/3" type="submit">Update Job</button>
+          </div>
+        </form>
       </div>
     </div>
+    
   );
 };
 

@@ -1,10 +1,11 @@
 import { useQuery } from "@tanstack/react-query";
 import MyJobList from "./MyJobList";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 
 
 const MyJobs = () => {
+  
 
   const {isLoading, data: items, isError, error} = useQuery({
     queryKey: ['items'],
@@ -14,7 +15,13 @@ const MyJobs = () => {
     }
   });
 
-  const [jobs, setJobs] = useState(items);
+  const [jobs, setJobs] = useState([]);
+
+  useEffect(() => {
+    if (items) {
+      setJobs(items);
+    }
+  }, [items]);
 
   if(isLoading){
     return <div className="flex justify-center items-center my-2"><span className="loading loading-spinner text-info"></span></div>
@@ -22,6 +29,8 @@ const MyJobs = () => {
   if(isError){
     return <p className="text-center text-red-600 my-2">error: {error.message}</p>
   }
+
+  
 
 
   
@@ -37,7 +46,7 @@ const MyJobs = () => {
     </thead>
     <tbody>
       {
-        jobs.map(job => <MyJobList
+        jobs && jobs.map(job => <MyJobList
         key={job._id}
         job={job}      
         jobs={jobs}

@@ -65,175 +65,142 @@ const AddAJob = () => {
 
 
   return (
-    <div className="bg-[#F4F3F0] p-8">
-      <h2 className="text-3xl font-extrabold text-center">Add a new job</h2>
-      <div className="flex justify-center">
-      <form onSubmit={handleAddJob}>
-        <div className="md:flex mb-4">
-          {/* Job Name */}
-          <div className="form-control md:w-1/2">
-            <label className="label">
-              <span className="label-text">Job Name</span>
-            </label>
-            <label className="input-group">
+    <div className="w-3/5 mx-auto my-2 md:my-4 pt-2 bg-gray-100 rounded-lg">
+      <h2 className="text-center text-lg md:text-2xl font-bold">Add A Job</h2>
+      <hr className="w-2/3 mx-auto my-2" />
+      <div className="flex justify-center w-full mt-2 md:mt-4">
+        <form onSubmit={handleAddJob} className="w-11/12 py-2 md:py-4 ">
+          {/* category & job applicants */}
+          <div className="md:flex justify-between mb-2 md:mb-4 space-x-4 space-y-2">
+            {/* category */}
+            <div className="flex justify-start items-center space-x-2 w-full md:w-1/2">
+              <label>Job Category:</label>
+              <select
+                name="category"                
+                className="flex-1 w-1/4 py-1 px-2 border-2 border-slate-300 rounded-md"
+              >
+                <option value="On-Site">On-Site</option>
+                <option value="Remote">Remote</option>
+                <option value="Part-Time">Part-Time</option>
+                <option value="Hybrid">Hybrid</option>
+              </select>
+            </div>
+            {/* job applicant */}
+            <div className="flex justify-start items-center space-x-2 w-full md:w-1/2">
+              <label>Job Applicants Number:</label>
+              <input
+                type="number"
+                name="applicants"
+                className="flex-1 w-1/4 py-1 px-2 border-2 border-slate-300 rounded-md"                
+                required
+              />
+            </div>
+          </div>
+          {/* title & salary part */}
+          <div className="md:flex justify-between mb-2 md:mb-4 space-x-4 space-y-2">
+            {/* title */}
+            <div className="flex justify-start items-center space-x-2 w-full md:w-1/2">
+              <label>Job Title:</label>
               <input
                 type="text"
-                name="title"                
-                placeholder="Job Name"
-                className="input input-bordered w-full"
+                name="title"
+                className="flex-1 w-2/3 py-1 px-2 border-2 border-slate-300 rounded-md"
+                
+                required
               />
-            </label>
-          </div>
-          {/* category*/}
-          <div className="form-control w-1/2 ml-4">
-            <label className="label">
-              <span className="label-text">Category Name</span>
-            </label>
-            <label className="input-group">
-              <input
-                type="text"
-                name="category"
-                placeholder="Category Name"
-                className="input input-bordered w-full"
-              />
-            </label>
-          </div>
-        </div>
-        {/* short salary_range*/}
-        <div className="mb-4">
-          <div className="form-control md:w-full">
-            <label className="label">
-              <span className="label-text">Salary Range</span>
-            </label>
-            <label className="input-group">
+            </div>
+            {/* salary */}
+            <div className="flex justify-start items-center space-x-2 w-full md:w-1/2">
+              <label>Salary Range:</label>
               <input
                 type="text"
                 name="salary_range"
-                placeholder="Salary Range"
-                className="input input-bordered w-full"
+                className="flex-1 w-2/3 py-1 px-2 border-2 border-slate-300 rounded-md"
+                
+                required
               />
-            </label>
+            </div>
           </div>
-        </div>
-        {/* Photo URL */}
-        <div className="mb-4">
-          <div className="form-control md:w-full">
-            <label className="label">
-              <span className="label-text">Description</span>
-            </label>
-            <label className="input-group">
-              <input
-                type="text"
-                name="description"
-                placeholder="Description"
-                className="input input-bordered w-full"
-              />
-            </label>
-          </div>
-        </div>
-
-        <div className="md:flex mb-4">
-          {/* posting_date */}
-          <div className="form-control md:w-1/2">
-            <label className="label">
-              <span className="label-text">Posting date</span>
-            </label>
-            <label className="input-group">
+          {/* date */}
+          <div className="md:flex justify-between mb-2 md:mb-4 space-x-4">
+            <div className="flex justify-start items-center space-x-2 w-full md:w-1/2">
+              <label>Job Posting Date:</label>
               <input
                 type="date"
                 name="posting_date"
-                placeholder="Posting date"
-                className="input input-bordered w-full"
+                className="flex-1 py-1 px-2 border-2 border-slate-300 rounded-md"
               />
-            </label>
-          </div>
-          {/* application_deadline */}
-          <div className="form-control md:w-1/2 ml-4">
-            <label className="label">
-              <span className="label-text">Application deadline</span>
-            </label>
-            <label className="input-group">
+            </div>
+            
+            <div className="flex justify-start items-center space-x-2 w-full md:w-1/2">
+              <label>Application Deadline:</label>
               <input
                 type="date"
-                name="application_deadline"
-                placeholder="Application deadline"
-                className="input input-bordered w-full"
+            name="application_deadline"
+                className="flex-1 py-1 px-2 border-2 border-slate-300 rounded-md"
               />
-            </label>
+            </div>
           </div>
-        </div>
-
-        <div className="md:flex mb-4">
-          {/* Stock Status */}
-          <div className="form-control md:w-1/2">
-            <label className="label">
-              <span className="label-text">Applicants</span>
-            </label>
-            <label className="input-group">
-              <input
-                type="text"
-                name="applicants"
-                placeholder="Applicants"
-                className="input input-bordered w-full"
-              />
-            </label>
-          </div>
-          {/* Processing Time */}
-          <div className="form-control md:w-1/2 ml-4">
-            <label className="label">
-              <span className="label-text">Image</span>
-            </label>
-            <label className="input-group">
+          {/* picture URL */}
+          <div className="mb-2 md:mb-4">
+            <div className="flex justify-start items-center space-x-2 w-full">
+              <label>Picture URL of the Job Banner:</label>
               <input
                 type="text"
                 name="image"
-                placeholder="image"
-                className="input input-bordered w-full"
+                className="flex-1 py-1 px-2 border-2 border-slate-300 rounded-md"
+               
+                required
               />
-            </label>
+            </div>
           </div>
-        </div>
-        <div className="mb-4">
-          <div className="form-control md:w-full">
-            <label className="label">
-              <span className="label-text">User Email</span>
-            </label>
-            <label className="input-group">
+
+          {/* job description */}
+
+          <div className="md:flex mb-2 md:mb-4">
+            <div className="flex justify-start items-center space-x-2 w-full">
+              <label>Job Description:</label>
+              <textarea
+                name="description"
+                className="flex-1 w-2/3 py-1 px-2 border-2 border-slate-300 rounded-md"
+                
+                required
+              ></textarea>
+            </div>
+          </div>
+          {/* user name & email */}
+          <div className="md:flex justify-between mb-2 md:mb-4 space-x-4 space-y-2">
+            {/* user name */}
+            <div className="flex justify-start items-center space-x-2 w-full md:w-1/2">
+              <label>User Name:</label>
+              <input
+                type="text"
+                name="user"
+                className="flex-1 w-2/3 py-1 px-2 border-2 border-slate-300 rounded-md"
+                defaultValue={user?.displayName}
+                readOnly
+              />
+            </div>
+            {/* email */}
+            <div className="flex justify-start items-center space-x-2 w-full md:w-1/2">
+              <label>User Email:</label>
               <input
                 type="email"
                 name="email"
-                defaultValue={user.email}
-                placeholder="User Email"
-                className="input input-bordered md:w-full"
+                className="flex-1 w-2/3 py-1 px-2 border-2 border-slate-300 rounded-md"
+                defaultValue={user?.email}
+                readOnly
               />
-            </label>
+            </div>
           </div>
-        </div>
-        <div className="form-control md:w-1/2">
-            <label className="label">
-              <span className="label-text">User Name</span>
-            </label>
-            <label className="input-group">
-              <input
-                type="text"
-                name="name" 
-                defaultValue={user.displayName}               
-                placeholder="User Name"
-                className="input input-bordered w-full"
-              />
-            </label>
-          </div>
-               
-        
 
-        <input
-          type="submit"
-          value="Add Craft"
-          className="btn btn-outline md:w-full"
-        />
-      </form>
+          <div className="flex justify-center items-center">
+            <button className="btn bg-[#818cf8] w-2/3" type="submit">Add Job</button>
+          </div>
+        </form>
       </div>
     </div>
+    
   );
 };
 
