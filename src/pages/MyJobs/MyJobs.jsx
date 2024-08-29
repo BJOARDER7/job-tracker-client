@@ -35,19 +35,21 @@ const MyJobs = () => {
 
   
   return (
-    <table className="my-4">
+    <div className="overflow-x-auto w-4/5 my-4 mx-auto">
+      <table className="table table-xs">
     <thead>
       <tr>
         <th></th>
         <th>Job Title</th>
         <th>Description</th>
-        <th>Actions</th>
+        <th className="col-span-2 text-center">Actions</th>
       </tr>
     </thead>
     <tbody>
       {
-        jobs && jobs.map(job => <MyJobList
+        jobs && jobs.map((job, idx) => <MyJobList
         key={job._id}
+        idx={idx}
         job={job}      
         jobs={jobs}
         setJobs={setJobs}        
@@ -55,6 +57,7 @@ const MyJobs = () => {
       }
     </tbody>
   </table>
+    </div>
   );
 };
 

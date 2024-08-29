@@ -34,7 +34,7 @@ const UpdateJob = () => {
     );
   }  
 
-  const { _id, title, posting_date, application_deadline, salary_range, applicants, description, category, image } = job;
+  const { _id, title, posting_date, application_deadline, salary_range, applicants, description, category, image, name, email } = job;
 
   console.log(job)
 
@@ -219,7 +219,7 @@ const UpdateJob = () => {
                 type="text"
                 name="user"
                 className="flex-1 w-2/3 py-1 px-2 border-2 border-slate-300 rounded-md"
-                defaultValue={user?.displayName}
+                defaultValue={name}
                 readOnly
               />
             </div>
@@ -230,7 +230,7 @@ const UpdateJob = () => {
                 type="email"
                 name="email"
                 className="flex-1 w-2/3 py-1 px-2 border-2 border-slate-300 rounded-md"
-                defaultValue={user?.email}
+                defaultValue={email}
                 readOnly
               />
             </div>

@@ -2,10 +2,11 @@ import { FaEdit, FaRegTrashAlt } from "react-icons/fa";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
 
-const MyJobList = ({ job, jobs, setJobs}) => {
+const MyJobList = ({ idx, job, jobs, setJobs}) => {
   const {_id} = job;
   
-  
+  let index = idx + 1;
+
   const handleDelete = _id => {
     Swal.fire({
       title: "Are you sure?",
@@ -36,19 +37,17 @@ const MyJobList = ({ job, jobs, setJobs}) => {
 
   return (
     <tr>
-      <th>
-          <label>
-            <input type="checkbox" className="checkbox" />
-          </label>
-        </th>
-      <td>{job.title}</td>
+      <th>{index}</th>
+      <td className="font-semibold">{job.title}</td>
       <td>{job.description}</td>
-      <td className="flex justify-center items-center gap-4">
+      <td>
         <Link to={`/update/${_id}`}>        
         <button>
           <FaEdit />
         </button>
         </Link>
+        </td>
+        <td>
         <button onClick={() => handleDelete(_id)}>
           <FaRegTrashAlt />
         </button>
