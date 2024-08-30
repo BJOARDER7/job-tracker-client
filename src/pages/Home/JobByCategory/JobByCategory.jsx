@@ -17,7 +17,7 @@ const JobByCategory = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get("http://localhost:5000/jobs").then((data) => {
+    axios.get("https://job-tracker-server.vercel.app/jobs").then((data) => {
       setJobs(data.data);
     });
   }, []);

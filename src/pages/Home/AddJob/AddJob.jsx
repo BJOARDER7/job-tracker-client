@@ -36,7 +36,7 @@ const AddJob = () => {
 
     // send data to the server
     axios
-      .post("http://localhost:5000/jobs", jobData)
+      .post("https://job-tracker-server.vercel.app/jobs", jobData)
       .then((data) => {
         if (data.data.insertedId) {
           Swal.fire({

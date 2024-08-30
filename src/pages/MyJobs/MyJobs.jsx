@@ -10,7 +10,7 @@ const MyJobs = () => {
   const {isLoading, data: items, isError, error} = useQuery({
     queryKey: ['items'],
     queryFn: async () => {
-      const res = await fetch('http://localhost:5000/jobs');
+      const res = await fetch('https://job-tracker-server.vercel.app/jobs');
       return res.json();
     }
   });
